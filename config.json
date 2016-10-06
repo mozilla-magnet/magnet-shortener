@@ -1,0 +1,8 @@
+{
+  "shortener": {
+    "host": "localhost",
+    "protocol": "http",
+    "length": 9,
+    "alphabet": "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ_abcdefghijkmnopqrstuvwxyz"
+  }
+}
