@@ -4,5 +4,9 @@
     "protocol": "http",
     "length": 9,
     "alphabet": "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ_abcdefghijkmnopqrstuvwxyz"
+  },
+  "service": {
+    "service_port": 8080,
+    "admin_port": 9090
   }
 }
