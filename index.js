@@ -3,7 +3,9 @@ const config = require('yajsonfig')(__dirname + '/config.json').service;
 
 const Shortener = require('./lib');
 const MemoryBackend = require('./lib/backends/memory');
-const shortener = new Shortener(MemoryBackend);
+const RedisBackend = require('./lib/backends/redis');
+//const shortener = new Shortener(MemoryBackend);
+const shortener = new Shortener(RedisBackend);
 
 const app = express();
 const admin = express();

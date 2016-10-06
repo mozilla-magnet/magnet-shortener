@@ -15,6 +15,9 @@
   "dependencies": {
     "express": "^4.14.0",
     "minimist": "^1.2.0",
+    "redis": "^2.6.2",
+    "redis-commands": "^1.2.0",
+    "then-redis": "^2.0.1",
     "yajsonfig": "^1.0.0"
   }
 }
