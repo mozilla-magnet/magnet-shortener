@@ -1,0 +1,19 @@
+{
+  "name": "zhortener",
+  "version": "1.0.0",
+  "description": "Simple express url shortener service",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "Francisco Jordano <francisco@jordano.es>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "express": "^4.14.0",
+    "yajsonfig": "^1.0.0"
+  }
+}
