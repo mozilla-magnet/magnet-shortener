@@ -4,6 +4,7 @@
   "description": "Simple express url shortener service",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "npm test"
   },
   "keywords": [
