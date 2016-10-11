@@ -7,11 +7,16 @@
   },
   "service": {
     "service_port": 8080,
-    "admin_port": 9090
+    "admin_port": 9090,
+    "backend": "magnetcontentapi"
   },
   "redis": {
     "host": "localhost",
     "port": 6379,
     "db": "4"
+  },
+  "magnetcontentapi": {
+    "endpoint": "http://localhost:3000/v1/search/shortid/:slug",
+    "apikey": "test"
   }
 }
