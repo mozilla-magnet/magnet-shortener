@@ -1,14 +1,17 @@
 const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 const config = require('yajsonfig')(__dirname + '/config.json').service;
 
 const Shortener = require('./lib');
-const MemoryBackend = require('./lib/backends/memory');
-const RedisBackend = require('./lib/backends/redis');
-//const shortener = new Shortener(MemoryBackend);
-const shortener = new Shortener(RedisBackend);
+
+const Backend = require(path.join(__dirname, './lib/backends/', config.backend));
+const shortener = new Shortener(Backend);
 
 const app = express();
 const admin = express();
+
+app.use(morgan('combined'));
 
 app.get('/:slug', (req, res, next) => {
   const slug = req.params['slug'].trim();
@@ -29,6 +32,8 @@ app.get('/:slug', (req, res, next) => {
       });
 });
 
+admin.use(morgan('combined'));
+
 admin.post('/:url', (req, res, next) => {
   const url = req.params['url'].trim();
   if (!url) {
@@ -45,6 +50,8 @@ app.listen(config.service_port, () => {
   console.log('Service launched at port ', config.service_port);
 });
 
-admin.listen(config.admin_port, () => {
-  console.log('Admin launched at port ', config.admin_port);
-});
+if (Backend.supportsAdmin()) {
+  admin.listen(config.admin_port, () => {
+    console.log('Admin launched at port ', config.admin_port);
+  });
+}
