@@ -11,7 +11,17 @@ const shortener = new Shortener(Backend);
 const app = express();
 const admin = express();
 
+const ONE_DAY = 60 * 60 * 24;
+const ONE_WEEK = ONE_DAY * 7;
+
 app.use(morgan('combined'));
+
+app.use((req, res, next) => {
+  res.set({
+    'Cache-Control': `no-cache, no-store, must-revalidate`
+  });
+  next();
+});
 
 app.get('/:slug', (req, res, next) => {
   const slug = req.params['slug'].trim();
@@ -22,7 +32,7 @@ app.get('/:slug', (req, res, next) => {
   shortener.get(slug).then(
     (url) => {
       if (url) {
-        return res.redirect(301, url);
+        return res.redirect(302, url);
       }
 
       return res.sendStatus(404);
